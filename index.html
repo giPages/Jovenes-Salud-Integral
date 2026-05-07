@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jóvenes Salud Integral</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul: #1565C0;
+  --azul-vivo: #1E88E5;
+  --celeste: #29B6F6;
+  --rosa: #EC407A;
+  --rosa-suave: #F8BBD0;
+  --verde: #26C6DA;
+  --dorado: #FFD54F;
+  --fondo: #F0F7FF;
+  --blanco: #ffffff;
+  --texto: #1a2744;
+  --gris: #607D8B;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  overflow-x: hidden;
+}
+
+/* ========== BANNER ========== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+}
+
+.hero img.banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, var(--fondo));
+}
+
+/* ========== HEADER ========== */
+header {
+  text-align: center;
+  padding: 28px 20px;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-wrap {
+  display: inline-block;
+  background: white;
+  border-radius: 24px;
+  padding: 16px 32px;
+  box-shadow: 0 20px 60px rgba(21,101,192,0.18), 0 4px 20px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  border: 3px solid rgba(41,182,246,0.2);
+  animation: floatIn 0.8s cubic-bezier(.22,1,.36,1) both;
+}
+
+.logo-wrap img {
+  height: 90px;
+  width: auto;
+  display: block;
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tagline {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--celeste), var(--azul-vivo));
+  color: white;
+  padding: 8px 28px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(41,182,246,0.35);
+  animation: floatIn 0.8s 0.2s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* ========== NAV ========== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 24px rgba(21,101,192,0.10);
+  border-bottom: 3px solid var(--celeste);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--azul);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  transition: all 0.25s;
+}
+
+nav a:hover {
+  background: linear-gradient(135deg, var(--celeste), var(--azul-vivo));
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(41,182,246,0.35);
+}
+
+/* ========== SECCIONES ========== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 24px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-title h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 2.4rem;
+  color: var(--azul);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.section-title .line {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gris);
+  font-size: 1rem;
+}
+
+.section-title .line::before,
+.section-title .line::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(to right, var(--celeste), var(--azul-vivo));
+  border-radius: 2px;
+}
+
+/* ========== SERVICIOS GRID ========== */
+#servicios {
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 12px 48px rgba(21,101,192,0.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  background: var(--fondo);
+  padding: 24px 18px;
+  border-radius: 18px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--azul);
+  border: 2px solid transparent;
+  cursor: default;
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  overflow: hidden;
+}
+
+.card .icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--celeste), var(--azul-vivo));
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 16px;
+}
+
+.card:hover::before { opacity: 1; }
+.card:hover { color: white; transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(41,182,246,0.3); border-color: var(--celeste); }
+.card:hover .icon { filter: brightness(5); }
+.card > * { position: relative; z-index: 1; }
+
+/* ========== TURNOS ========== */
+#turnos {
+  background: linear-gradient(135deg, #E3F2FD 0%, #F0F7FF 50%, #FCE4EC 100%);
+}
+
+.contacto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.form-wrap {
+  flex: 1;
+  min-width: 320px;
+}
+
+.form-wrap h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--azul);
+  margin-bottom: 24px;
+}
+
+.form-card {
+  background: white;
+  padding: 36px;
+  border-radius: 24px;
+  box-shadow: 0 12px 48px rgba(21,101,192,0.12);
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--gris);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid #E3F2FD;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: #FAFCFF;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--celeste);
+  box-shadow: 0 0 0 4px rgba(41,182,246,0.12);
+  background: white;
+}
+
+textarea { resize: vertical; min-height: 100px; }
+
+.btn-wa {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 28px rgba(37,211,102,0.35);
+  font-family: 'Nunito', sans-serif;
+}
+
+.btn-wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(37,211,102,0.45);
+}
+
+/* ========== MAPA ========== */
+.map-wrap {
+  flex: 1;
+  min-width: 320px;
+}
+
+.map-wrap h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--azul);
+  margin-bottom: 24px;
+}
+
+.map-card {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(21,101,192,0.12);
+  height: 420px;
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.chip {
+  background: white;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--azul);
+  box-shadow: 0 4px 14px rgba(21,101,192,0.10);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: linear-gradient(135deg, #0D47A1, #1565C0, #1E88E5);
+  color: white;
+  text-align: center;
+  padding: 60px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 120px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.footer-logo {
+  height: 100px;
+  width: auto;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  padding: 12px 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.footer-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.footer-sub {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 28px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.2s;
+}
+
+.footer-links a:hover {
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.footer-web {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: white;
+  transition: background 0.2s;
+}
+
+.footer-web:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 24px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .hero { height: 280px; }
+  header { margin-top: -60px; padding-bottom: 30px; }
+  .logo-wrap img { height: 60px; }
+  .section-title h2 { font-size: 1.8rem; }
+  nav { gap: 4px; }
+  nav a { padding: 7px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO / BANNER -->
+<div class="hero">
+  <img src="banner.jpg" class="banner" alt="Jóvenes Salud Integral">
+</div>
+
+<!-- HEADER -->
+<header>
+  <span class="tagline">Centro de atención integral · Cipolletti, Río Negro</span>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#servicios">Servicios</a>
+  <a href="#turnos">Turnos</a>
+  <a href="#contacto">Ubicación</a>
+  <a href="https://jovenessaludintegral.com/" target="_blank">🌐 Web oficial</a>
+</nav>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+<div class="container">
+  <div class="section-title">
+    <h2>Áreas de trabajo</h2>
+    <div class="line">Equipo interdisciplinario especializado</div>
+  </div>
+
+  <div class="grid">
+    <div class="card"><span class="icon">🍽️</span>Trastornos de la conducta alimentaria</div>
+    <div class="card"><span class="icon">🧠</span>Salud mental y psicoterapia</div>
+    <div class="card"><span class="icon">💑</span>Terapia de pareja y familiar</div>
+    <div class="card"><span class="icon">🔬</span>Evaluación neurocognitiva</div>
+    <div class="card"><span class="icon">⚡</span>Terapia neurocognitiva</div>
+    <div class="card"><span class="icon">🌱</span>Infancias y adolescencia</div>
+    <div class="card"><span class="icon">👥</span>Adultes y adultes mayores</div>
+    <div class="card"><span class="icon">🎯</span>Orientación vocacional y ocupacional</div>
+    <div class="card"><span class="icon">🤸</span>Psicomotricidad</div>
+    <div class="card"><span class="icon">🤝</span>Habilidades sociales (discapacidad)</div>
+  </div>
+</div>
+</section>
+
+<!-- TURNOS -->
+<section id="turnos">
+<div class="container">
+  <div class="section-title">
+    <h2>Solicitar turno</h2>
+    <div class="line">Contactanos fácilmente por WhatsApp</div>
+  </div>
+
+  <div class="contacto">
+    <div class="form-wrap">
+      <div class="form-card">
+        <div class="field">
+          <label>Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Tu nombre...">
+        </div>
+        <div class="field">
+          <label>Edad</label>
+          <input type="number" id="edad" placeholder="Años">
+        </div>
+        <div class="field">
+          <label>Servicio requerido</label>
+          <select id="servicio">
+            <option value="">Seleccioná un servicio...</option>
+            <option>TCA — Trastornos conducta alimentaria</option>
+            <option>Salud mental / Psicoterapia</option>
+            <option>Terapia de pareja / familiar</option>
+            <option>Evaluación o terapia neurocognitiva</option>
+            <option>Infancias / Adolescencia</option>
+            <option>Adultes / Adultes mayores</option>
+            <option>Orientación vocacional</option>
+            <option>Psicomotricidad</option>
+            <option>Habilidades sociales</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Motivo de consulta</label>
+          <textarea id="motivo" placeholder="Contanos brevemente qué necesitás..."></textarea>
+        </div>
+        <button class="btn-wa" onclick="enviar()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Enviar por WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <div class="map-wrap" id="contacto">
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps?q=Cipolletti,+Rio+Negro,+Argentina&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="info-chips">
+        <div class="chip">📍 Cipolletti, Río Negro</div>
+        <div class="chip">🕐 Atención con turno previo</div>
+        <div class="chip">💬 WhatsApp directo</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo.jpg" class="footer-logo" alt="Logo Jóvenes Salud Integral">
+  <div class="footer-title">Jóvenes Salud Integral</div>
+  <div class="footer-sub">Centro de atención integral en salud</div>
+
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#turnos">Turnos</a>
+    <a href="#contacto">Ubicación</a>
+  </div>
+
+  <a href="https://jovenessaludintegral.com/" target="_blank" class="footer-web">
+    🌐 jovenessaludintegral.com
+  </a>
+
+  <div class="footer-copy">
+    📍 Cipolletti, Río Negro &nbsp;·&nbsp; © 2025 Jóvenes Salud Integral
+  </div>
+</footer>
+
+<script>
+function enviar(){
+  let nombre = document.getElementById("nombre").value.trim();
+  let edad   = document.getElementById("edad").value.trim();
+  let servicio = document.getElementById("servicio").value;
+  let motivo = document.getElementById("motivo").value.trim();
+
+  if(!nombre || !edad || !servicio){
+    alert("Por favor completá nombre, edad y servicio.");
+    return;
+  }
+
+  let mensaje = `Hola! Solicito un turno:\n\n👤 Nombre: ${nombre}\n🎂 Edad: ${edad}\n🏥 Servicio: ${servicio}${motivo ? '\n📝 Motivo: ' + motivo : ''}`;
+
+  let numero = "5492995521565";
+
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+}
+</script>
+
+</body>
+</html>
